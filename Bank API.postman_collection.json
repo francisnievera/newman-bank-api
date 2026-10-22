@@ -1,0 +1,256 @@
+{
+  "info": {
+    "_postman_id": "d938d718-ac13-4b42-9874-284cc5f909a4",
+    "name": "Bank API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52516732",
+    "_collection_link": "https://go.postman.co/collection/52516732-d938d718-ac13-4b42-9874-284cc5f909a4?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create Acc",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const response = pm.response.json();\r\n\r\npm.environment.set(\r\n    \"accountId\",\r\n    response.accountId\r\n);\r\n\r\nconsole.log(\r\n    \"Saved Account ID:\",\r\n    response.accountId\r\n);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"accountName\": \"John\",\r\n  \"accountType\": \"Savings\",\r\n  \"initialDeposit\": 20000\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4500/accounts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4500",
+          "path": [
+            "accounts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Acc",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4500/accounts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4500",
+          "path": [
+            "accounts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Specific Acc",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-mock-scenario",
+            "value": "account-is-missing"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4500/accounts/{{accountId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4500",
+          "path": [
+            "accounts",
+            "{{accountId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Acc Balance",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4500/accounts/{{accountId}}/balance",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4500",
+          "path": [
+            "accounts",
+            "{{accountId}}",
+            "balance"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Deposit",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-mock-scenario",
+            "value": "invalid-deposit",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"amount\": 100000\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4500/accounts/{{accountId}}/deposit",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4500",
+          "path": [
+            "accounts",
+            "{{accountId}}",
+            "deposit"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Withdraw",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-mock-scenario",
+            "value": "account-frozen",
+            "disabled": true
+          },
+          {
+            "key": "x-mock-scenario",
+            "value": "insufficient-funds",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"amount\": 15000\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4500/accounts/{{accountId}}/withdraw",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4500",
+          "path": [
+            "accounts",
+            "{{accountId}}",
+            "withdraw"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post Transfers",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-mock-scenario",
+            "value": "transfer-failed",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"fromAccount\": \"{{accountId}}\",\r\n  \"toAccount\": \"{{accountid2}}\",\r\n  \"amount\": 15000\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4500/transfers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4500",
+          "path": [
+            "transfers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Transactions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4500/transactions/{{accountId}}/{{accountid2}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4500",
+          "path": [
+            "transactions",
+            "{{accountId}}",
+            "{{accountid2}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

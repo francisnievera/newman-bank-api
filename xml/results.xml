@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Bank API" tests="40" time="0.734">
+  <testsuite name="Create Acc" id="a41ed96e-864c-43ef-9482-c8920c73af19" timestamp="2026-10-22T02:27:30.557Z" tests="0" failures="0" errors="0" time="0.031"/>
+  <testsuite name="Get Acc" id="94c3f9f5-60c6-425b-93c2-6b1588cfe5a8" timestamp="2026-10-22T02:27:30.557Z" tests="0" failures="0" errors="0" time="0.009"/>
+  <testsuite name="Get Specific Acc" id="e27ef838-4b71-40f4-bc63-a3be267f7746" timestamp="2026-10-22T02:27:30.557Z" tests="0" failures="0" errors="0" time="0.006"/>
+  <testsuite name="Get Acc Balance" id="ac3500dc-b037-4c64-9658-76c293fe4034" timestamp="2026-10-22T02:27:30.557Z" tests="0" failures="0" errors="0" time="0.006"/>
+  <testsuite name="Deposit" id="3883b3eb-5a5b-4f39-a254-8c117666d063" timestamp="2026-10-22T02:27:30.557Z" tests="0" failures="0" errors="0" time="0.041"/>
+  <testsuite name="Withdraw" id="2dc41ce3-1e23-4eb9-971c-c2297371a9a2" timestamp="2026-10-22T02:27:30.557Z" tests="0" failures="0" errors="0" time="0.037"/>
+  <testsuite name="Post Transfers" id="9c6dad1f-775c-48f2-b734-215007265f2f" timestamp="2026-10-22T02:27:30.557Z" tests="0" failures="0" errors="0" time="0.006"/>
+  <testsuite name="Get Transactions" id="b6cee01b-f4f6-484f-af84-afa84c90a088" timestamp="2026-10-22T02:27:30.557Z" tests="0" failures="0" errors="0" time="0.011"/>
+</testsuites>
